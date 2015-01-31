@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/AddExpenseItemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="30dp"
+        android:text="Add expense item for claim"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/categoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/pickDateEditText"
+        android:layout_marginTop="22dp"
+        android:text="Category"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/pickDateEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/pickDateTextView"
+        android:ems="10"
+        android:hint="MM/DD/YYYY"
+        android:inputType="date" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/AmountSpentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/AddClaimdescriptionEditText"
+        android:layout_marginTop="36dp"
+        android:layout_toLeftOf="@+id/AddClaimdescriptionEditText"
+        android:text="Amount spent"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/amountSpentEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/AmountSpentTextView"
+        android:layout_alignBottom="@+id/AmountSpentTextView"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/AmountSpentTextView"
+        android:ems="10"
+        android:hint="Tap to add..."
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/AddClaimdescriptionEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/descriptionTextView"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="Tap to add..."
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/categoryTextView"
+        android:layout_marginTop="35dp"
+        android:text="Description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/pickDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/AddExpenseItemTextView"
+        android:layout_marginTop="18dp"
+        android:text="Date"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/unitOfCurrencyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/descriptionTextView"
+        android:layout_below="@+id/AmountSpentTextView"
+        android:layout_marginTop="23dp"
+        android:text="Unit of Currency"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/categoryEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/categoryTextView"
+        android:layout_toRightOf="@+id/AmountSpentTextView"
+        android:ems="10"
+        android:hint="Tap to choose"
+        android:onClick="categoryOptions"
+        android:editable="false" />
+
+    <EditText
+        android:id="@+id/currencyEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/unitOfCurrencyTextView"
+        android:layout_toRightOf="@+id/AmountSpentTextView"
+        android:ems="10"
+        android:hint="Tap to choose"
+        android:onClick="currencyOptions"
+        android:editable="false" />
+
+    <Button
+        android:id="@+id/addAnotherClaimButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="addAnotherClaim"
+        android:text="Add another claim" />
+
+    <Button
+        android:id="@+id/submitClaimButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onClickDone"
+        android:text="Submit claim" />
+
+</RelativeLayout>

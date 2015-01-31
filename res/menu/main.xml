@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.expensetracker.MainActivity" >
+
+    <item
+        android:id="@+id/addAnotherClaimButton"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+    <item android:id="@+id/editClaimsItem" android:title="Edit Claims" android:onClick="editClaim"></item>
+
+</menu>
+
