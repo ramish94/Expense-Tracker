@@ -6,9 +6,11 @@ import java.util.Collection;
 public class ExpenseItemList {
 	
 	protected ArrayList<ExpenseItem> expenseItemList;
+	protected ArrayList<Listener> listeners;
 	
 	public ExpenseItemList() {
 		expenseItemList = new ArrayList<ExpenseItem>();
+		listeners = new ArrayList<Listener>();
 	}
 	
 	public Collection<ExpenseItem> getExpenseItems() {
@@ -21,13 +23,23 @@ public class ExpenseItemList {
 	}
 
 	private void notifyListener() {
-		// TODO Auto-generated method stub
-		
+		for (Listener listener : listeners) {
+			listener.update();
+		}
 	}
-
+	
 	public void removeExpenseItem(ExpenseItem testExpenseItem) {
 		expenseItemList.remove(testExpenseItem);
+		notifyListener();
 		
+	}
+	
+	public void addListener(Listener l) {
+		listeners.add(l);
+	}
+	
+	public void removeListener(Listener l) {
+		listeners.remove(l);
 	}
 
 }

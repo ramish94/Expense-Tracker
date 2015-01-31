@@ -22,17 +22,29 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
+	 String claimsOnHoldOptions[] = {
+				"Delete",
+				"Edit",
+				"Email this claim",
+				"Cancel"
+		};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +57,58 @@ public class MainActivity extends Activity {
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, 
 				android.R.layout.simple_list_item_1, list);
 		displayClaimsListView.setAdapter(claimAdapter);
+		
+		// Added an observer pattern here
+		ClaimListController.getClaimList().addListener(new Listener() {
+			@Override
+			public void update() {
+				list.clear();
+				Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
+				list.addAll(claims);
+				claimAdapter.notifyDataSetChanged();
+			}
+		});
+		
+		displayClaimsListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Claim claim = list.get(position);
+				AlertDialog.Builder builder = getAlertDialog(claimsOnHoldOptions, "Select an option",
+						claim, MainActivity.this);
+				builder.show();
+				return false;
+			}
+		});
+
+	}
+	
+	public static AlertDialog.Builder getAlertDialog(final String strArray[], 
+			String title, final Claim claim, final Activity activity) {
+		
+	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+	    alertDialogBuilder.setTitle(title);
+
+	    alertDialogBuilder.setItems(strArray, new DialogInterface.OnClickListener() {
+
+	        @Override
+	        public void onClick(DialogInterface dialog, int which) {
+	        	if (which == 0) {
+	        		ClaimListController.getClaimList().removeClaim(claim);
+	        	}
+	        	else if (which == 1) {
+	        		
+	        	}
+	        	else if (which == 2) {
+	        		
+	        	}
+	        	else if (which == 3) {
+	        		dialog.dismiss();
+	        	}
+	        }
+	    });
+	   return alertDialogBuilder;
 	}
 	
 	public void onClickAddClaimButton(View v) {

@@ -1,4 +1,4 @@
-package com.example.expensetracker;
+ package com.example.expensetracker;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,10 +6,12 @@ import java.util.Collection;
 public class ClaimList {
 	
 	protected ArrayList<Claim> claimList;
+	protected ArrayList<Listener> listeners;
 	
 	
 	public ClaimList() {
-		claimList = new ArrayList<Claim>();
+		claimList = new ArrayList<Claim>(); 
+		listeners = new ArrayList<Listener>();
 	}
 
 	public Collection<Claim> getClaims() {
@@ -18,30 +20,27 @@ public class ClaimList {
 
 	public void addClaim(Claim testClaim) {
 		claimList.add(testClaim);
+		notifyListener();
 	}
 
-	private void notifyListeners() {
-		// TODO Auto-generated method stub
+	private void notifyListener() {
+		for (Listener listener : listeners) {
+			listener.update();
+		}
 	}
 
 	public void removeClaim(Claim testClaim) {
 		claimList.remove(testClaim);
+		notifyListener();
 		
 	}
-	public Claim chooseClaim() throws EmptyClaimListException {
-		int size = claimList.size();
-		if (size <= 0) {
-			throw new EmptyClaimListException();
-		}
-		int index = (int) (claimList.size() * Math.random());
-		return claimList.get(index);
+	
+	public void addListener(Listener l) {
+		listeners.add(l);
+	}
+	
+	public void removeListener(Listener l) {
+		listeners.remove(l);
 	}
 
-	public int size() {
-		return claimList.size();
-	}
-
-	public boolean contains(Claim testClaim) {
-		return claimList.contains(testClaim);
-	}
 }

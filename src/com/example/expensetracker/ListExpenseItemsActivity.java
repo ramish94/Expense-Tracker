@@ -4,13 +4,25 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ListExpenseItemsActivity extends Activity {
+	
+	 String expenseItemsOnHoldOptions[] = {
+				"Delete",
+				"Edit",
+				"Cancel"
+		};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +35,55 @@ public class ListExpenseItemsActivity extends Activity {
 		final ArrayAdapter<ExpenseItem> expenseItemAdapter = new ArrayAdapter<ExpenseItem>(this, 
 				android.R.layout.simple_list_item_1, list);
 		displayExpenseItemsListView.setAdapter(expenseItemAdapter);
+		
+		// Added an observer pattern here
+		ExpenseItemListController.getExpenseItemList().addListener(new Listener() {
+			@Override
+			public void update() {
+				list.clear();
+				Collection<ExpenseItem> expenseItems = ExpenseItemListController.getExpenseItemList().getExpenseItems();
+				list.addAll(expenseItems);
+				expenseItemAdapter.notifyDataSetChanged();
+			}
+		});
+		
+		displayExpenseItemsListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				ExpenseItem expenseItem = list.get(position);
+				AlertDialog.Builder builder = getAlertDialog(expenseItemsOnHoldOptions, "Select an option",
+						expenseItem, ListExpenseItemsActivity.this);
+				builder.show();
+				return false;
+			}
+		});
+	}
+	
+	public static AlertDialog.Builder getAlertDialog(final String strArray[], 
+			String title, final ExpenseItem expenseItem, final Activity activity) {
+		
+	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+	    alertDialogBuilder.setTitle(title);
+
+	    alertDialogBuilder.setItems(strArray, new DialogInterface.OnClickListener() {
+
+	        @Override
+	        public void onClick(DialogInterface dialog, int which) {
+	        	if (which == 0) {
+	        		ExpenseItemListController.getExpenseItemList().removeExpenseItem(expenseItem);
+	        	}
+	        	else if (which == 1) {
+	        		
+	        	}
+	        	else if (which == 2) {
+	        		dialog.dismiss();
+	        	}
+	        }
+	    });
+	   return alertDialogBuilder;
 	}
 
 	@Override

@@ -84,7 +84,6 @@ public class AddExpenseItemsActivity extends Activity {
 
 	        @Override
 	        public void onClick(DialogInterface dialog, int which) {
-	           Toast.makeText(activity, strArray [which], Toast.LENGTH_SHORT).show();
 	           editText.setText(strArray[which]);
 	        }
 	    });
