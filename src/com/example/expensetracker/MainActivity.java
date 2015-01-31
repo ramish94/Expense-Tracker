@@ -94,16 +94,18 @@ public class MainActivity extends Activity {
 
 	        @Override
 	        public void onClick(DialogInterface dialog, int which) {
-	        	if (which == 0) {
+	        	if (which == 0) { 
+	        		//Remove claims
 	        		ClaimListController.getClaimList().removeClaim(claim);
 	        	}
 	        	else if (which == 1) {
-	        		
+	        		//Edit Claims
 	        	}
 	        	else if (which == 2) {
-	        		
+	        		//Email claims
 	        	}
 	        	else if (which == 3) {
+	        		//Dismiss dialog box
 	        		dialog.dismiss();
 	        	}
 	        }
