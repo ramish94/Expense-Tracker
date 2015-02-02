@@ -18,8 +18,12 @@
 
 package com.example.expensetracker;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -59,30 +63,22 @@ public class EmailClaimActivity extends Activity {
 	}
 	
 	public void onClickSendButton(View v) {
+		
 		EditText subjectLine = (EditText) findViewById(R.id.emailSubject);
 		EditText emailAddress = (EditText) findViewById(R.id.emailAddress);
 		
 		String subject = subjectLine.getText().toString();
 		String emailAd = emailAddress.getText().toString();
-
-		/*final Intent send = new Intent(Intent.ACTION_SENDTO);
+		String emailText = "sjgsjgnsnjn";
 		
-		  send.putExtra(Intent.EXTRA_EMAIL, new String[]{ emailAd});
-		  send.putExtra(Intent.EXTRA_SUBJECT, subject);
-
-		  send.setType("text/plain");
-
-		  startActivity(Intent.createChooser(send, "Choose an Email client:"));*/
+		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		
-		Intent send = new Intent(Intent.ACTION_SENDTO);
-		/*String uriText = "mailto:" + Uri.encode("email@gmail.com") + 
-		          "?subject=" + Uri.encode("the subject") + 
-		          "&body=" + Uri.encode("the body of the message");
-		Uri uri = Uri.parse(uriText);*/
-
-		//send.setData(uri);
+		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailAd);
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailText);
+		emailIntent.setType("message/rfc822");
 		
-		startActivity(Intent.createChooser(send, "Choose an email client"));
+		this.startActivity(Intent.createChooser(emailIntent, "Send a Mail through.."));
 		  
 		  
 	}
