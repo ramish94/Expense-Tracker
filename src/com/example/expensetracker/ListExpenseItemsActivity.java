@@ -16,6 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * This Activity does exactly the same thing as MainActivity, but for ExpenseItems. Refer back to MainActivity
+ * for comments describing its purpose, design rationale, and any outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.util.ArrayList;
@@ -47,6 +52,7 @@ public class ListExpenseItemsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list_expense_items);
 		
+		// Initialize ClaimList and ExpenseItemListManager for serializability
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 		

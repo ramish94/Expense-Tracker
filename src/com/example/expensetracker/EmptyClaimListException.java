@@ -16,6 +16,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * Throws a EmptyListException.
+ */
+
 package com.example.expensetracker;
 
 public class EmptyClaimListException extends Exception {

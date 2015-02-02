@@ -16,6 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * This class does exactly the same thing as ClaimListController, but for ExpenseItems. Refer back to ClaimListController
+ * for comments describing its purpose, design rationale, and any outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.io.IOException;
@@ -57,7 +62,6 @@ public class ExpenseItemListController {
 	}
 
 	public void addExpenseItem(ExpenseItem expenseItem) {
-		// TODO Auto-generated method stub
 		getExpenseItemList().addExpenseItem(expenseItem);
 		
 	}

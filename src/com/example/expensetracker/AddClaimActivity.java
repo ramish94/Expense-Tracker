@@ -16,6 +16,18 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * AddClaimActivity.java
+ * 
+ * The purpose of this class is to fulfill the UI and front end function of adding a claim, this aptly name "AddClaimActivity"
+ * It simply puts together all the pieces from the add_claim XML layout, and calls the addClaimAction() method to add claims to
+ * the ArrayList
+ *
+ * Design Rationale: Very similar to others. Using delegation and OOP concepts so that code integrity can be maintained
+ * 
+ * No outstanding issues
+ */
+
 package com.example.expensetracker;
 
 
@@ -38,10 +50,12 @@ public class AddClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_claim);
 		
+		// Initialize ClaimList and ExpenseItemListManager for serializability
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 	}
 	
+	// Method for showing AlertDialog when a button is pressed. Called from the OnClick function in the XML file
 	public void showExpenseItemsAlertDialog(View v) {
 		addClaimAction();
 		
@@ -49,6 +63,8 @@ public class AddClaimActivity extends Activity {
 		alertBuilder.setTitle("Add expense items?");
 		alertBuilder.setMessage("Do you want to add expense items to this claim?");
 		
+		// Positive and Negative buttons. Setting up a AlertDialog and calling the appropriate onClick function
+
 		alertBuilder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				expenseItemsOptionYes();
@@ -63,6 +79,8 @@ public class AddClaimActivity extends Activity {
 		alertBuilder.show();
 	}
 	
+	// starting the appropriate activites according to the User's response. 
+	
 	public void expenseItemsOptionYes() {
 		Intent intent = new Intent(AddClaimActivity.this, AddExpenseItemsActivity.class);
 		startActivity(intent);
@@ -72,6 +90,9 @@ public class AddClaimActivity extends Activity {
 		Intent intent = new Intent(AddClaimActivity.this, MainActivity.class);
 		startActivity(intent);
 	}
+	
+	// Add claim action. Called to store text from EditText fields from the add_claim xml file, and then 
+	// finally adds claim to the arrayList.
 	
 	public void addClaimAction() {
 		

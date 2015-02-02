@@ -16,6 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ *
+ * This class does exactly the same thing as ClaimList, but for ExpenseItems. Refer back to ClaimList
+ * for comments describing its purpose, design rationale, and any outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.io.Serializable;

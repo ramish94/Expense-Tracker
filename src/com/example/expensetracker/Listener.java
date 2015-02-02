@@ -16,6 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+//Implement a public interface Listener, that consists of a void method update that we implement 
+//when we call Listener in MainActivity and ListExpenseItems.
 package com.example.expensetracker;
 
 public interface Listener {

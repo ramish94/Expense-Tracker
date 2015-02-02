@@ -16,6 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * This Activity does exactly the same thing as AddClaimActivity, but for ExpenseItems. Refer back to AddClaimActivity
+ * for comments describing its purpose, design rationale, and any outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import android.app.Activity;
@@ -26,7 +31,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -56,6 +60,8 @@ public class AddExpenseItemsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_expense_claims);
 		
+		// Initialize ClaimList and ExpenseItemListManager for serializability
+		
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 		
@@ -66,14 +72,6 @@ public class AddExpenseItemsActivity extends Activity {
 		addExpenseItemAction();
 		Intent intent = new Intent(AddExpenseItemsActivity.this, AddExpenseItemsActivity.class);
 		startActivity(intent);
-    	/*final Button addAnotherClaimbutton = (Button)findViewById(R.id.addAnotherClaimButton); 
-		addAnotherClaimbutton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(AddExpenseItemsActivity.this, AddExpenseItemsActivity.class);
-				startActivity(intent);
-			}
-		});*/
-		
 	}
 	
 	public void onClickDone(View v) {

@@ -16,6 +16,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * EditClaimActivity.java
+ * 
+ * Design Rationale: Similar to AddClaimActivity. Needed a separate class to handle editing claims to follow OOP procedure. 
+ * Calls the editClaim method from ClaimList.
+ * 
+ * No outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import android.app.Activity;
@@ -35,6 +44,7 @@ public class EditClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
 		
+		// Initialize ClaimList and ExpenseItemListManager for serializability
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 		

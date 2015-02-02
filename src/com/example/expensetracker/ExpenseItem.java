@@ -16,6 +16,17 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ *
+ * This class does exactly the same thing as Claim.java, but for ExpenseItems. Refer back to Claim.java
+ * for comments describing its purpose, design rationale, and any outstanding issues.
+ * 
+ *
+ * REMOVE COMMENTED OUT PORTION OF THE CODE down below (the equals and hashCode methods). Run once more before removing
+ *
+ *
+ */
+
 package com.example.expensetracker;
 
 import java.io.Serializable;

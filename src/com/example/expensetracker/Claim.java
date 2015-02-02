@@ -16,6 +16,18 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * Claim.java
+ * 
+ * This is the class that allows us to create the Claim object and utilize OOP. Characteristics include claimName, claimStartDate.
+ * claimEndDate, and claimDescription. We initialize the attributes of the Claim object
+ * 
+ * Design Rationale: We needed a class for Claim if we wanted to go through the Object-Oriented version of this project. Will be used
+ * in other classes for storing, and serializing data. 
+ * 
+ * No outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.io.Serializable;
@@ -33,7 +45,6 @@ public class Claim implements Serializable {
 	protected String claimDescrpition;
 
 	public Claim(String claimName, String claimStartDate, String claimEndDate, String claimDescription) {
-		// TODO Auto-generated constructor stub
     	this.claimName = claimName;
         this.claimStartDate = claimStartDate;
         this.claimEndDate = claimEndDate;

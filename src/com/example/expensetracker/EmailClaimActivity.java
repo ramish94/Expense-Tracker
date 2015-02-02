@@ -49,6 +49,10 @@ public class EmailClaimActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_email_claim);
+		
+		// Initialize ClaimList and ExpenseItemListManager for serializability
+		ClaimListManager.initManager(this.getApplicationContext());
+		ExpenseItemListManager.initManager(this.getApplicationContext());
 	}
 	
 	public void onClickSendButton(View v) {

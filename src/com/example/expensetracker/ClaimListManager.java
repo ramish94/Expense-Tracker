@@ -16,6 +16,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * ClaimListManager.java
+ * 
+ * Design Rationale: Simply there to serialize data for claims and the ClaimList. Converts the data to and from Strings,
+ * and then saves and loads the claim list.
+ * 
+ * No outstanding issues.
+ */
 package com.example.expensetracker;
 
 import java.io.ByteArrayInputStream;

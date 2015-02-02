@@ -16,6 +16,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/* 
+ * ClaimList.java
+ * 
+ * Design Rationale: Initializes ClaimList as an object. Creates a null ArrayList called claimList comprising of claims. Comprises of individual
+ * ArrayList actions for the ClaimList such as editClaim, removeClaim, and addClaim. Notify's listeners after every actions
+ * in order to update the list. Again following the principals of OOP. Representing the ArrayList of claims as an object 
+ * 
+ * No outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.io.Serializable;

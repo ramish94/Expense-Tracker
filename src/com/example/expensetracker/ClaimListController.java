@@ -16,6 +16,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * ClaimListController
+ * 
+ * Design Rationale: Controller to look over all the functions of ClaimList. Initializes a static null claimList of type ClaimList
+ * Serializes data accross the ClaimList using ClaimListManager.
+ * 
+ * No outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.io.IOException;

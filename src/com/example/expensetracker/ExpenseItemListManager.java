@@ -16,6 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * This class does exactly the same thing as ClaimListManager, but for ExpenseItems. Refer back to ClaimListManagers
+ * for comments describing its purpose, design rationale, and any outstanding issues.
+ */
+
 package com.example.expensetracker;
 
 import java.io.ByteArrayInputStream;
