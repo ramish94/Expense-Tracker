@@ -23,9 +23,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="23dp"
             android:onClick="onClickAddExpenseItemButton"
             android:text="Add Expense Item" />
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/addExpenseItemsButton"
+            android:layout_alignBottom="@+id/addExpenseItemsButton"
+            android:layout_alignParentLeft="true"
+            android:onClick="onClickHomeButton"
+            android:text="Home" />
         
 </RelativeLayout>

@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 				Claim claim = list.get(position);
 				//Toast.makeText(MainActivity.this, Integer.toString(list.indexOf(claim)), Toast.LENGTH_SHORT).show();
 				AlertDialog.Builder builder = getAlertDialog(claimsOnHoldOptions, "Select an option",
-						claim, MainActivity.this, list.indexOf(claim));
+						claim, MainActivity.this, list.indexOf(claim), claim);
 				builder.show();
 				return false;
 			}
@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public AlertDialog.Builder getAlertDialog(final String strArray[], 
-			String title, final Claim claim, final Activity activity, final int in) {
+			String title, final Claim claim, final Activity activity, final int in, final Claim cl) {
 		
 	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 	    alertDialogBuilder.setTitle(title);
@@ -107,6 +107,7 @@ public class MainActivity extends Activity {
 	        		// Edit Claim
 	        		Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
 	        		intent.putExtra("index", in);
+	        		intent.putExtra("claim", cl);
 	        		startActivity(intent);
 	        	}
 	        	else if (which == 2) {

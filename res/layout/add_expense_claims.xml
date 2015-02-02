@@ -3,17 +3,6 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/AddExpenseItemTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="30dp"
-        android:text="Add expense item for claim"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
         android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,16 +116,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:onClick="addAnotherClaim"
-        android:text="Add another claim" />
+        android:text="Submit Claim" />
 
     <Button
         android:id="@+id/submitClaimButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:onClick="onClickDone"
-        android:text="Submit claim" />
+        android:text="Done" />
+
+    <TextView
+        android:id="@+id/AddExpenseItemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Add expense item(s) for your claim. Press done when you are finished"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

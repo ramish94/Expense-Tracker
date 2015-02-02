@@ -43,6 +43,22 @@ public class EditExpenseItemsActivity extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		final int expenseItem_index = extras.getInt("index");
+		final ExpenseItem expenseItem = (ExpenseItem) extras.get("expenseItem");
+		//final ExpenseItem expense_item = (ExpenseItem) extras.getSerializable("expenseItem");
+		
+		EditText dateTextView = (EditText) findViewById(R.id.editExpenseItemDate);
+		EditText categoryTextView = (EditText) findViewById(R.id.editCategory);
+		EditText descriptionTextView = (EditText) findViewById(R.id.editExpenseItemDescription);
+		EditText amountSpentTextView = (EditText) findViewById(R.id.editAmountSpent);
+		EditText currencyTextView = (EditText) findViewById(R.id.editCurrency);
+		
+		categoryTextView.setText(expenseItem.getCategory().toString());
+		descriptionTextView.setText(expenseItem.getItemDescription().toString());
+		amountSpentTextView.setText(expenseItem.getAmountSpent().toString());
+		currencyTextView.setText(expenseItem.getUnitOfCurrency().toString());
+		dateTextView.setText(expenseItem.getDate().toString());
+		
+		
 		
 		final Button button = (Button) findViewById(R.id.editExpenseItemDoneButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -74,12 +90,18 @@ public class EditExpenseItemsActivity extends Activity {
 	public void editExpenseItemAction(int expenseItemIndex) {
 		
 		Toast.makeText(this, "Updating your expense item", Toast.LENGTH_SHORT).show();
+		
+		
 		ExpenseItemListController eil = new ExpenseItemListController();
+		
+		
+		
 		EditText dateTextView = (EditText) findViewById(R.id.editExpenseItemDate);
 		EditText categoryTextView = (EditText) findViewById(R.id.editCategory);
 		EditText descriptionTextView = (EditText) findViewById(R.id.editExpenseItemDescription);
 		EditText amountSpentTextView = (EditText) findViewById(R.id.editAmountSpent);
 		EditText currencyTextView = (EditText) findViewById(R.id.editCurrency);
+		
 		
 		eil.editExpenseItem(new ExpenseItem(dateTextView.getText().toString(), 
 				categoryTextView.getText().toString(), descriptionTextView.getText().toString(),

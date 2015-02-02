@@ -58,7 +58,7 @@ public class ListExpenseItemsActivity extends Activity {
 				
 				ExpenseItem expenseItem = list.get(position);
 				AlertDialog.Builder builder = getAlertDialog(expenseItemsOnHoldOptions, "Select an option",
-						expenseItem, ListExpenseItemsActivity.this, list.indexOf(expenseItem));
+						expenseItem, ListExpenseItemsActivity.this, list.indexOf(expenseItem), expenseItem);
 				builder.show();
 				return false;
 			}
@@ -70,8 +70,13 @@ public class ListExpenseItemsActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void onClickHomeButton(View v) {
+		Intent intent = new Intent(ListExpenseItemsActivity.this, MainActivity.class);
+		startActivity(intent);
+	}
+	
 	public AlertDialog.Builder getAlertDialog(final String strArray[], 
-			String title, final ExpenseItem expenseItem, final Activity activity, final int in) {
+			String title, final ExpenseItem expenseItem, final Activity activity, final int in, final ExpenseItem eI) {
 		
 	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 	    alertDialogBuilder.setTitle(title);
@@ -88,6 +93,7 @@ public class ListExpenseItemsActivity extends Activity {
 	        		// Edit ExpenseItem
 	        		Intent intent = new Intent(ListExpenseItemsActivity.this, EditExpenseItemsActivity.class);
 	        		intent.putExtra("index", in);
+	        		intent.putExtra("expenseItem", eI);
 	        		startActivity(intent);
 	        	}
 	        	else if (which == 2) {

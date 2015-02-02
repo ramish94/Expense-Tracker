@@ -22,6 +22,17 @@ public class EditClaimActivity extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		final int claim_index = extras.getInt("index");
+		final Claim claim = (Claim) extras.get("claim");
+		
+		EditText nameTextView = (EditText) findViewById(R.id.newClaimName);
+		EditText startDateTextView = (EditText) findViewById(R.id.newStartDate);
+		EditText endDateTextView = (EditText) findViewById(R.id.newEndDate);
+		EditText descriptionTextView = (EditText) findViewById(R.id.newDescription);
+		
+		nameTextView.setText(claim.getName().toString());
+		startDateTextView.setText(claim.getStartDate().toString());
+		endDateTextView.setText(claim.getEndDate().toString());
+		descriptionTextView.setText(claim.getDescription().toString());
 		
 		final Button button = (Button) findViewById(R.id.updateButton);
         button.setOnClickListener(new View.OnClickListener() {

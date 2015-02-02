@@ -59,8 +59,7 @@ public class AddExpenseItemsActivity extends Activity {
 	}
 	
 	public void onClickDone(View v) {
-		addExpenseItemAction();
-		Intent intent = new Intent(AddExpenseItemsActivity.this, MainActivity.class);
+		Intent intent = new Intent(AddExpenseItemsActivity.this, ListExpenseItemsActivity.class);
 		startActivity(intent);
 	}
 	
