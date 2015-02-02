@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
 	 String claimsOnHoldOptions[] = {
 				"Delete",
 				"Edit",
+				"View expense items",
 				"Email this claim",
 				"Mark as Returned",
 				"Mark as Approved",
@@ -104,21 +105,27 @@ public class MainActivity extends Activity {
 	        	}
 	        	else if (which == 1) {
 	        		// Edit Claim
-	        		//onClickEditClaimButton();
 	        		Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
 	        		intent.putExtra("index", in);
 	        		startActivity(intent);
 	        	}
 	        	else if (which == 2) {
-	        		// Email claim
+	        		// View expenseItems for this claim
+	        		Intent intent = new Intent(MainActivity.this, ListExpenseItemsActivity.class);
+	        		startActivity(intent);
 	        	}
 	        	else if (which == 3) {
+	        		// Email claim
+	        	}
+	        	else if (which == 4) {
 	        		// Mark as returned
+	        		Toast.makeText(MainActivity.this, "Claim marked as returned", Toast.LENGTH_LONG).show();
 	        	}
-	        	else if (which == 4) {
+	        	else if (which == 5) {
 	        		// Mark as approved
+	        		Toast.makeText(MainActivity.this, "Claim marked as approved", Toast.LENGTH_LONG).show();
 	        	}
-	        	else if (which == 4) {
+	        	else if (which == 6) {
 	        		//Dismiss dialog box
 	        		dialog.dismiss();
 	        	}

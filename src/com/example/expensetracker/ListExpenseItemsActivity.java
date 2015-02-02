@@ -65,6 +65,11 @@ public class ListExpenseItemsActivity extends Activity {
 		});
 	}
 	
+	public void onClickAddExpenseItemButton(View v) {
+		Intent intent = new Intent(ListExpenseItemsActivity.this, AddExpenseItemsActivity.class);
+		startActivity(intent);
+	}
+	
 	public AlertDialog.Builder getAlertDialog(final String strArray[], 
 			String title, final ExpenseItem expenseItem, final Activity activity, final int in) {
 		

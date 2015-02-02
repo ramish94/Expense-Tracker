@@ -46,13 +46,15 @@ public class AddExpenseItemsActivity extends Activity {
 	
 	public void addAnotherClaim(View v) {
 		addExpenseItemAction();
-    	final Button addAnotherClaimbutton = (Button)findViewById(R.id.addAnotherClaimButton); 
+		Intent intent = new Intent(AddExpenseItemsActivity.this, AddExpenseItemsActivity.class);
+		startActivity(intent);
+    	/*final Button addAnotherClaimbutton = (Button)findViewById(R.id.addAnotherClaimButton); 
 		addAnotherClaimbutton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(AddExpenseItemsActivity.this, AddExpenseItemsActivity.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 		
 	}
 	
