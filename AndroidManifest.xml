@@ -38,6 +38,14 @@
             android:name=".ListExpenseItemsActivity"
             android:label="@string/title_activity_list_expense_items" >
         </activity>
+        <activity
+            android:name=".EditExpenseItemsActivity"
+            android:label="@string/title_activity_edit_expense_items" >
+        </activity>
+        <activity
+            android:name=".EditClaimActivity"
+            android:label="@string/title_activity_edit_claim" >
+        </activity>
     </application>
 
 </manifest>

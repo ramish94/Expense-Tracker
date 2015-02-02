@@ -2,7 +2,12 @@ package com.example.expensetracker;
 
 import java.io.Serializable;
 
-public class ExpenseItem {
+public class ExpenseItem implements Serializable {
+	
+	/**
+	 * ExpenseItem serialization ID
+	 */
+	private static final long serialVersionUID = -7069571140571193967L;
 	
 	protected String date;
 	protected String category;
@@ -42,4 +47,23 @@ public class ExpenseItem {
 	public String toString() {
 		return itemDescription + "\n" + category + "\n" + date + "\n" + amountSpent + " " + unitOfCurrency + "\n" + "\n";	
 	}
+	
+	/*public boolean equals(Object compareExpenseItem) {
+		if (compareExpenseItem != null && compareExpenseItem.getClass() == this.getClass()) {
+			return this.equals((Claim) compareExpenseItem);
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean equals(ExpenseItem compareExpenseItem) {
+		if (compareExpenseItem == null) {
+			return false;
+		}
+		return getItemDescription().equals(compareExpenseItem.getItemDescription());
+		}
+
+	public int hashCode() {
+		return ("Expense item description: "+getItemDescription()).hashCode();
+	}*/
 }

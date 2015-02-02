@@ -23,6 +23,7 @@ import java.util.Collection;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,8 +33,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -43,6 +42,8 @@ public class MainActivity extends Activity {
 				"Delete",
 				"Edit",
 				"Email this claim",
+				"Mark as Returned",
+				"Mark as Approved",
 				"Cancel"
 		};
 
@@ -51,6 +52,9 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		ClaimListManager.initManager(this.getApplicationContext());
+		ExpenseItemListManager.initManager(this.getApplicationContext());
+		 
 		ListView displayClaimsListView = (ListView) findViewById(R.id.ClaimsListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
@@ -75,17 +79,17 @@ public class MainActivity extends Activity {
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Claim claim = list.get(position);
+				//Toast.makeText(MainActivity.this, Integer.toString(list.indexOf(claim)), Toast.LENGTH_SHORT).show();
 				AlertDialog.Builder builder = getAlertDialog(claimsOnHoldOptions, "Select an option",
-						claim, MainActivity.this);
+						claim, MainActivity.this, list.indexOf(claim));
 				builder.show();
 				return false;
 			}
 		});
-
 	}
 	
-	public static AlertDialog.Builder getAlertDialog(final String strArray[], 
-			String title, final Claim claim, final Activity activity) {
+	public AlertDialog.Builder getAlertDialog(final String strArray[], 
+			String title, final Claim claim, final Activity activity, final int in) {
 		
 	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 	    alertDialogBuilder.setTitle(title);
@@ -95,16 +99,26 @@ public class MainActivity extends Activity {
 	        @Override
 	        public void onClick(DialogInterface dialog, int which) {
 	        	if (which == 0) { 
-	        		//Remove claims
+	        		// Remove claim
 	        		ClaimListController.getClaimList().removeClaim(claim);
 	        	}
 	        	else if (which == 1) {
-	        		//Edit Claims
+	        		// Edit Claim
+	        		//onClickEditClaimButton();
+	        		Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
+	        		intent.putExtra("index", in);
+	        		startActivity(intent);
 	        	}
 	        	else if (which == 2) {
-	        		//Email claims
+	        		// Email claim
 	        	}
 	        	else if (which == 3) {
+	        		// Mark as returned
+	        	}
+	        	else if (which == 4) {
+	        		// Mark as approved
+	        	}
+	        	else if (which == 4) {
 	        		//Dismiss dialog box
 	        		dialog.dismiss();
 	        	}

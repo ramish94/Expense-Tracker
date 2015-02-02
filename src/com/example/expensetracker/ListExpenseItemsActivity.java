@@ -6,6 +6,7 @@ import java.util.Collection;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ListExpenseItemsActivity extends Activity {
@@ -28,6 +28,9 @@ public class ListExpenseItemsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list_expense_items);
+		
+		ClaimListManager.initManager(this.getApplicationContext());
+		ExpenseItemListManager.initManager(this.getApplicationContext());
 		
 		ListView displayExpenseItemsListView = (ListView) findViewById(R.id.expenseItemsListView);
 		Collection<ExpenseItem> expenseItems = ExpenseItemListController.getExpenseItemList().getExpenseItems();
@@ -55,15 +58,15 @@ public class ListExpenseItemsActivity extends Activity {
 				
 				ExpenseItem expenseItem = list.get(position);
 				AlertDialog.Builder builder = getAlertDialog(expenseItemsOnHoldOptions, "Select an option",
-						expenseItem, ListExpenseItemsActivity.this);
+						expenseItem, ListExpenseItemsActivity.this, list.indexOf(expenseItem));
 				builder.show();
 				return false;
 			}
 		});
 	}
 	
-	public static AlertDialog.Builder getAlertDialog(final String strArray[], 
-			String title, final ExpenseItem expenseItem, final Activity activity) {
+	public AlertDialog.Builder getAlertDialog(final String strArray[], 
+			String title, final ExpenseItem expenseItem, final Activity activity, final int in) {
 		
 	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 	    alertDialogBuilder.setTitle(title);
@@ -73,12 +76,17 @@ public class ListExpenseItemsActivity extends Activity {
 	        @Override
 	        public void onClick(DialogInterface dialog, int which) {
 	        	if (which == 0) {
+	        		// Delete ExpenseItem
 	        		ExpenseItemListController.getExpenseItemList().removeExpenseItem(expenseItem);
 	        	}
 	        	else if (which == 1) {
-	        		
+	        		// Edit ExpenseItem
+	        		Intent intent = new Intent(ListExpenseItemsActivity.this, EditExpenseItemsActivity.class);
+	        		intent.putExtra("index", in);
+	        		startActivity(intent);
 	        	}
 	        	else if (which == 2) {
+	        		// Dismiss view
 	        		dialog.dismiss();
 	        	}
 	        }

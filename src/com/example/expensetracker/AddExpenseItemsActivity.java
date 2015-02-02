@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings.Global;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +37,9 @@ public class AddExpenseItemsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_expense_claims);
+		
+		ClaimListManager.initManager(this.getApplicationContext());
+		ExpenseItemListManager.initManager(this.getApplicationContext());
 		
 		
 	}
@@ -94,10 +96,9 @@ public class AddExpenseItemsActivity extends Activity {
 		
 		Toast.makeText(this, "Adding an expense item!!", Toast.LENGTH_SHORT).show();
 		ExpenseItemListController eil = new ExpenseItemListController();
-		
 		EditText dateTextView = (EditText) findViewById(R.id.pickDateEditText);
 		EditText categoryTextView = (EditText) findViewById(R.id.categoryEditText);
-		EditText descriptionTextView = (EditText) findViewById(R.id.AddClaimdescriptionEditText);
+		EditText descriptionTextView = (EditText) findViewById(R.id.editClaimdescriptionEditText);
 		EditText amountSpentTextView = (EditText) findViewById(R.id.amountSpentEditText);
 		EditText currencyTextView = (EditText) findViewById(R.id.currencyEditText);
 		

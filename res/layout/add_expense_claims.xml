@@ -41,9 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/AddClaimdescriptionEditText"
+        android:layout_below="@+id/editClaimdescriptionEditText"
         android:layout_marginTop="36dp"
-        android:layout_toLeftOf="@+id/AddClaimdescriptionEditText"
+        android:layout_toLeftOf="@+id/editClaimdescriptionEditText"
         android:text="Amount spent"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -60,7 +60,7 @@
         android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/AddClaimdescriptionEditText"
+        android:id="@+id/editClaimdescriptionEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/descriptionTextView"

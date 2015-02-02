@@ -1,7 +1,14 @@
 package com.example.expensetracker;
 
-public class Claim {
+import java.io.Serializable;
 
+public class Claim implements Serializable {
+
+	/**
+	 * Claim serialization ID
+	 */
+	
+	private static final long serialVersionUID = 7723258797320542815L;
 	protected String claimName;
 	protected String claimStartDate;
 	protected String claimEndDate;
@@ -37,6 +44,25 @@ public class Claim {
 	
 	public String toString() {
 		return claimName + "\n" + "Dated from " + claimStartDate + " to " + claimEndDate + "\n" + claimDescrpition + "\n" + "\n";
+	}
+	
+	public boolean equals(Object compareClaim) {
+		if (compareClaim != null && compareClaim.getClass() == this.getClass()) {
+			return this.equals((Claim) compareClaim);
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean equals(Claim compareClaim) {
+		if (compareClaim == null) {
+			return false;
+		}
+		return getName().equals(compareClaim.getName());
+	}
+	
+	public int hashCode() {
+		return ("Claim name: "+getName()).hashCode();
 	}
 
 }

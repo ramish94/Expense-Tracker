@@ -1,16 +1,28 @@
 package com.example.expensetracker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ExpenseItemList {
+public class ExpenseItemList implements Serializable {
 	
-	protected ArrayList<ExpenseItem> expenseItemList;
-	protected ArrayList<Listener> listeners;
+	/**
+	 * ExpenseItemList serialization ID
+	 */
+	private static final long serialVersionUID = 2258272636220001170L;
+	protected ArrayList<ExpenseItem> expenseItemList = null;
+	protected transient ArrayList<Listener> listeners = null;
 	
 	public ExpenseItemList() {
 		expenseItemList = new ArrayList<ExpenseItem>();
 		listeners = new ArrayList<Listener>();
+	}
+	
+	private ArrayList<Listener> getListeners() {
+		if (listeners == null) {
+			listeners = new ArrayList <Listener>();
+		}
+		return listeners;
 	}
 	
 	public Collection<ExpenseItem> getExpenseItems() {
@@ -23,7 +35,7 @@ public class ExpenseItemList {
 	}
 
 	private void notifyListener() {
-		for (Listener listener : listeners) {
+		for (Listener listener : getListeners()) {
 			listener.update();
 		}
 	}
@@ -35,11 +47,17 @@ public class ExpenseItemList {
 	}
 	
 	public void addListener(Listener l) {
-		listeners.add(l);
+		getListeners().add(l);
 	}
 	
 	public void removeListener(Listener l) {
-		listeners.remove(l);
+		getListeners().remove(l); 
+	}
+
+	public void editExpenseItemList(ExpenseItem expenseItem, int i) {
+		expenseItemList.set(i, expenseItem);
+		notifyListener();
+		
 	}
 
 }

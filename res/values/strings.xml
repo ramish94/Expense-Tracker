@@ -8,5 +8,7 @@
     <string name="title_activity_add_claim">Add Claim</string>
     <string name="title_activity_add_expense_items">AddExpenseItemsActivity</string>
     <string name="title_activity_list_expense_items">ListExpenseItemsActivity</string>
+    <string name="title_activity_edit_expense_items">EditExpenseItemsActivity</string>
+    <string name="title_activity_edit_claim">EditClaimActivity</string>
 
 </resources>

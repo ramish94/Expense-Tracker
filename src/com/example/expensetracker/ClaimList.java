@@ -1,17 +1,28 @@
- package com.example.expensetracker;
+package com.example.expensetracker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ClaimList {
+public class ClaimList implements Serializable {
 	
-	protected ArrayList<Claim> claimList;
-	protected ArrayList<Listener> listeners;
-	
+	/**
+	 * ClaimList serialization ID
+	 */
+	private static final long serialVersionUID = 7082287930769549935L;
+	protected ArrayList<Claim> claimList = null;
+	protected transient ArrayList<Listener> listeners = null;
 	
 	public ClaimList() {
 		claimList = new ArrayList<Claim>(); 
 		listeners = new ArrayList<Listener>();
+	}
+	
+	private ArrayList<Listener> getListeners() {
+		if (listeners == null) {
+			listeners = new ArrayList <Listener>();
+		}
+		return listeners;
 	}
 
 	public Collection<Claim> getClaims() {
@@ -22,9 +33,14 @@ public class ClaimList {
 		claimList.add(testClaim);
 		notifyListener();
 	}
+	
+	public void editClaim(Claim testClaim, int i) {
+		claimList.set(i, testClaim);
+		notifyListener();
+	}
 
 	private void notifyListener() {
-		for (Listener listener : listeners) {
+		for (Listener listener : getListeners()) {
 			listener.update();
 		}
 	}
@@ -36,11 +52,11 @@ public class ClaimList {
 	}
 	
 	public void addListener(Listener l) {
-		listeners.add(l);
+		getListeners().add(l);
 	}
 	
 	public void removeListener(Listener l) {
-		listeners.remove(l);
+		getListeners().remove(l);
 	}
 
 }

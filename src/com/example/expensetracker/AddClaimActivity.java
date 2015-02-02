@@ -1,7 +1,5 @@
 package com.example.expensetracker;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,9 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 public class AddClaimActivity extends Activity {
@@ -23,6 +19,9 @@ public class AddClaimActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_claim);
+		
+		ClaimListManager.initManager(this.getApplicationContext());
+		ExpenseItemListManager.initManager(this.getApplicationContext());
 	}
 	
 	public void showExpenseItemsAlertDialog(View v) {
@@ -61,10 +60,10 @@ public class AddClaimActivity extends Activity {
 		Toast.makeText(this, "Adding a claim!", Toast.LENGTH_SHORT).show();
 		ClaimListController cl = new ClaimListController();
 		
-		EditText nameTextView = (EditText) findViewById(R.id.addClaimNameEditText);
-		EditText startDateTextView = (EditText) findViewById(R.id.startDateEditText);
-		EditText endDateTextView = (EditText) findViewById(R.id.endDateEditText);
-		EditText descriptionTextView = (EditText) findViewById(R.id.AddClaimdescriptionEditText);
+		EditText nameTextView = (EditText) findViewById(R.id.editClaimNameEditText);
+		EditText startDateTextView = (EditText) findViewById(R.id.editStartDateEditText);
+		EditText endDateTextView = (EditText) findViewById(R.id.editEndDateEditText);
+		EditText descriptionTextView = (EditText) findViewById(R.id.editAddClaimdescriptionEditText);
 		
 		cl.addClaim(new Claim(nameTextView.getText().toString(), startDateTextView.getText().toString(),
 				endDateTextView.getText().toString(), descriptionTextView.getText().toString()));

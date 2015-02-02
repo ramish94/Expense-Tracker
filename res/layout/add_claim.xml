@@ -6,97 +6,105 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context="com.example.expensetracker.EditClaimActivity" >
 
     <Button
-        android:id="@+id/nextButton"
+        android:id="@+id/editDoneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="showExpenseItemsAlertDialog"
-        android:text="Next" />
+        android:text="Done" />
 
     <TextView
-        android:id="@+id/endDateTextView"
+        android:id="@+id/editAddClaimNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/endDateEditText"
-        android:layout_alignParentLeft="true"
-        android:text="End date"
+        android:layout_alignBaseline="@+id/editClaimNameEditText"
+        android:layout_alignBottom="@+id/editClaimNameEditText"
+        android:text="Name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/endDateEditText"
+        android:id="@+id/editEndDateEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/AddClaimdescriptionEditText"
-        android:layout_below="@+id/startDateTextView"
-        android:layout_marginTop="31dp"
+        android:layout_alignLeft="@+id/editStartDateEditText"
+        android:layout_below="@+id/editStartDateEditText"
+        android:layout_marginTop="55dp"
         android:ems="10"
         android:hint="MM/DD/YYYY"
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/AddClaimdescriptionEditText"
+        android:id="@+id/editClaimNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/DescriptionTextView"
-        android:layout_toRightOf="@+id/DescriptionTextView"
+        android:layout_alignLeft="@+id/editStartDateEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Enter description here..."
-        android:inputType="textMultiLine" >
+        android:hint="Enter name here..." >
 
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/DescriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/endDateTextView"
-        android:layout_below="@+id/endDateTextView"
-        android:layout_marginTop="41dp"
-        android:text="Description"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <EditText
-        android:id="@+id/addClaimNameEditText"
+        android:id="@+id/editStartDateEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/addClaimNameTextView"
-        android:layout_alignLeft="@+id/startDateEditText"
-        android:ems="10"
-        android:hint="Enter name here..." />
-
-    <TextView
-        android:id="@+id/startDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/startDateEditText"
-        android:layout_alignLeft="@+id/endDateTextView"
-        android:text="Start date"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/startDateEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/endDateEditText"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="96dp"
+        android:layout_alignLeft="@+id/editAddClaimdescriptionEditText"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editClaimNameEditText"
+        android:layout_marginTop="51dp"
         android:ems="10"
         android:hint="MM/DD/YYYY"
         android:inputType="date" />
 
     <TextView
-        android:id="@+id/addClaimNameTextView"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/startDateTextView"
-        android:layout_alignLeft="@+id/startDateTextView"
-        android:layout_marginBottom="43dp"
-        android:text="Name"
+        android:layout_alignBaseline="@+id/editStartDateEditText"
+        android:layout_alignBottom="@+id/editStartDateEditText"
+        android:layout_alignLeft="@+id/editAddClaimNameTextView"
+        android:layout_toLeftOf="@+id/editStartDateEditText"
+        android:text="Start Date"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editEndDateEditText"
+        android:layout_alignBottom="@+id/editEndDateEditText"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="End Date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/editDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/editEndDateEditText"
+        android:layout_marginTop="44dp"
+        android:text="Description"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/editAddClaimdescriptionEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editDescriptionTextView"
+        android:layout_alignBottom="@+id/editDescriptionTextView"
+        android:layout_alignLeft="@+id/editDoneButton"
+        android:layout_marginLeft="14dp"
+        android:ems="10"
+        android:hint="Enter description here..."
+        android:inputType="textMultiLine" />
 
 </RelativeLayout>
