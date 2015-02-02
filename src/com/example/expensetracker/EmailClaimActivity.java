@@ -20,6 +20,7 @@ package com.example.expensetracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +54,8 @@ public class EmailClaimActivity extends Activity {
 		// Initialize ClaimList and ExpenseItemListManager for serializability
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
+		
+		
 	}
 	
 	public void onClickSendButton(View v) {
@@ -62,14 +65,26 @@ public class EmailClaimActivity extends Activity {
 		String subject = subjectLine.getText().toString();
 		String emailAd = emailAddress.getText().toString();
 
-		final Intent email = new Intent(android.content.Intent.ACTION_SENDTO);
+		/*final Intent send = new Intent(Intent.ACTION_SENDTO);
 		
-		  email.putExtra(Intent.EXTRA_EMAIL, new String[]{ emailAd});
-		  email.putExtra(Intent.EXTRA_SUBJECT, subject);
+		  send.putExtra(Intent.EXTRA_EMAIL, new String[]{ emailAd});
+		  send.putExtra(Intent.EXTRA_SUBJECT, subject);
 
-		  email.setType("plain/text");
+		  send.setType("text/plain");
 
-		  startActivity(Intent.createChooser(email, "Choose an Email client:"));
+		  startActivity(Intent.createChooser(send, "Choose an Email client:"));*/
+		
+		Intent send = new Intent(Intent.ACTION_SENDTO);
+		/*String uriText = "mailto:" + Uri.encode("email@gmail.com") + 
+		          "?subject=" + Uri.encode("the subject") + 
+		          "&body=" + Uri.encode("the body of the message");
+		Uri uri = Uri.parse(uriText);*/
+
+		//send.setData(uri);
+		
+		startActivity(Intent.createChooser(send, "Choose an email client"));
+		  
+		  
 	}
 
 	@Override
