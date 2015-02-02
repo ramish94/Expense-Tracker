@@ -16,6 +16,18 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
+/*
+ * This is the MainActivity file. It contains a listView object that displays the claims created by the users. Once the claim 
+ * is created  the user can click and hold the claim on the listView in order to summon the AlertDialog from where the User 
+ * can edit/delete it, as well as email the claim, mark it as returned/approved (to which the listView item gets it's 
+ * background colored according to the action chosen. It's quite nifty. I recommend trying it out (go on, I'll wait).
+ * 
+ * THIS APPLICATION DOES NOT SUPPORT (YET, WORK IN PROGRESS):
+ * 	- Sorting/Ordering claims 
+ * 	- Showing total currency amounts for a claim when listed
+ */
+
 package com.example.expensetracker;
 
 import java.util.ArrayList;
@@ -39,6 +51,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
+	
+	//Options for the AlertDialogBuilder
 	 String claimsOnHoldOptions[] = {
 				"Delete",
 				"Edit",
@@ -54,9 +68,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		// Initialize ClaimList and ExpenseItemListManager for serializability
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 		 
+		// Initialize listView, arrayList, and arrayAdapter for storing claims
 		final ListView displayClaimsListView = (ListView) findViewById(R.id.ClaimsListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
@@ -75,6 +91,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		// When the user holds onto a listView item for too long
 		displayClaimsListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -89,6 +106,8 @@ public class MainActivity extends Activity {
 		});
 	}
 	
+	// initialize AlertDialogBuilder, and setup all the options through strArray, and title
+	// pass on claim, Activity, in, for moving data through other activites
 	public AlertDialog.Builder getAlertDialog(final String strArray[], 
 			String title, final Claim claim, final Activity activity, final int in, final Claim cl,
 			final ListView displayListView) {
@@ -140,11 +159,13 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onClickAddClaimButton(View v) {
+		// What to do if a user clicks the "Add Claim" on the MainActivity. Called in onCreate in the XML file
 		Intent intent = new Intent(MainActivity.this, AddClaimActivity.class);
 		startActivity(intent);
 	}
 	
 	public void onClickCheckExpenseItemButton(View v) {
+		// What to do if a user clicks the "Check Expense Claim" on the MainActivity. Called in onCreate in the XML file
 		Intent intent = new Intent(MainActivity.this, ListExpenseItemsActivity.class);
 		startActivity(intent);
 	}
