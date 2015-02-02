@@ -20,9 +20,6 @@
  *
  * This class does exactly the same thing as Claim.java, but for ExpenseItems. Refer back to Claim.java
  * for comments describing its purpose, design rationale, and any outstanding issues.
- * 
- *
- * REMOVE COMMENTED OUT PORTION OF THE CODE down below (the equals and hashCode methods). Run once more before removing
  *
  *
  */
@@ -76,23 +73,4 @@ public class ExpenseItem implements Serializable {
 	public String toString() {
 		return itemDescription + "\n" + category + "\n" + date + "\n" + amountSpent + " " + unitOfCurrency + "\n" + "\n";	
 	}
-	
-	/*public boolean equals(Object compareExpenseItem) {
-		if (compareExpenseItem != null && compareExpenseItem.getClass() == this.getClass()) {
-			return this.equals((Claim) compareExpenseItem);
-		} else {
-			return false;
-		}
-	}
-	
-	public boolean equals(ExpenseItem compareExpenseItem) {
-		if (compareExpenseItem == null) {
-			return false;
-		}
-		return getItemDescription().equals(compareExpenseItem.getItemDescription());
-		}
-
-	public int hashCode() {
-		return ("Expense item description: "+getItemDescription()).hashCode();
-	}*/
 }
