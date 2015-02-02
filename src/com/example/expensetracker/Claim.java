@@ -73,7 +73,7 @@ public class Claim implements Serializable {
 	
 	public String toString() {
 		return claimName + "\n" + "Dated from " + claimStartDate + " to " + claimEndDate + "\n" + claimDescrpition + 
-				"\n" + "\n" + "Total Claim Amount: ";
+				"\n" + "\n";
 	}
 	
 	public boolean equals(Object compareClaim) {
