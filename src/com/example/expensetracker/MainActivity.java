@@ -26,6 +26,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +57,7 @@ public class MainActivity extends Activity {
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 		 
-		ListView displayClaimsListView = (ListView) findViewById(R.id.ClaimsListView);
+		final ListView displayClaimsListView = (ListView) findViewById(R.id.ClaimsListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, 
@@ -80,9 +81,8 @@ public class MainActivity extends Activity {
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Claim claim = list.get(position);
-				//Toast.makeText(MainActivity.this, Integer.toString(list.indexOf(claim)), Toast.LENGTH_SHORT).show();
 				AlertDialog.Builder builder = getAlertDialog(claimsOnHoldOptions, "Select an option",
-						claim, MainActivity.this, list.indexOf(claim), claim);
+						claim, MainActivity.this, list.indexOf(claim), claim, displayClaimsListView);
 				builder.show();
 				return false;
 			}
@@ -90,7 +90,8 @@ public class MainActivity extends Activity {
 	}
 	
 	public AlertDialog.Builder getAlertDialog(final String strArray[], 
-			String title, final Claim claim, final Activity activity, final int in, final Claim cl) {
+			String title, final Claim claim, final Activity activity, final int in, final Claim cl,
+			final ListView displayListView) {
 		
 	    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 	    alertDialogBuilder.setTitle(title);
@@ -121,10 +122,12 @@ public class MainActivity extends Activity {
 	        	else if (which == 4) {
 	        		// Mark as returned
 	        		Toast.makeText(MainActivity.this, "Claim marked as returned", Toast.LENGTH_LONG).show();
+	        		displayListView.getChildAt(in).setBackgroundColor(Color.RED);
 	        	}
 	        	else if (which == 5) {
 	        		// Mark as approved
 	        		Toast.makeText(MainActivity.this, "Claim marked as approved", Toast.LENGTH_LONG).show();
+	        		displayListView.getChildAt(in).setBackgroundColor(Color.GREEN);
 	        	}
 	        	else if (which == 6) {
 	        		//Dismiss dialog box
