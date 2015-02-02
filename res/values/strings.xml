@@ -10,5 +10,6 @@
     <string name="title_activity_list_expense_items">ListExpenseItemsActivity</string>
     <string name="title_activity_edit_expense_items">EditExpenseItemsActivity</string>
     <string name="title_activity_edit_claim">EditClaimActivity</string>
+    <string name="title_activity_email_claim">EmailClaimActivity</string>
 
 </resources>

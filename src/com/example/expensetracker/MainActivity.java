@@ -117,7 +117,8 @@ public class MainActivity extends Activity {
 	        		startActivity(intent);
 	        	}
 	        	else if (which == 3) {
-	        		// Email claim
+	        		Intent intent = new Intent(MainActivity.this, EmailClaimActivity.class);
+	        		startActivity(intent);
 	        	}
 	        	else if (which == 4) {
 	        		// Mark as returned
