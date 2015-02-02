@@ -52,7 +52,7 @@ public final class R {
         public static final int editExpenseItemDescription=0x7f080008;
         public static final int editExpenseItemDoneButton=0x7f08000a;
         public static final int editStartDateEditText=0x7f080019;
-        public static final int emailAddress=0x7f08000c;
+        public static final int emailAdd=0x7f08000c;
         public static final int emailSubject=0x7f08000e;
         public static final int expenseItemsListView=0x7f080010;
         public static final int homeButton=0x7f080012;

@@ -135,7 +135,10 @@ public class MainActivity extends Activity {
 	        		startActivity(intent);
 	        	}
 	        	else if (which == 3) {
+	        		// Email claim
 	        		Intent intent = new Intent(MainActivity.this, EmailClaimActivity.class);
+	        		intent.putExtra("index", in);
+	        		intent.putExtra("claim", cl);
 	        		startActivity(intent);
 	        	}
 	        	else if (which == 4) {

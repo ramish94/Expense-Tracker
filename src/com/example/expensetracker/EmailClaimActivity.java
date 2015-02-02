@@ -18,35 +18,17 @@
 
 package com.example.expensetracker;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
-/*
- * 
- * 
- * 
- * 
- * 
- * 
- * STILL NEED TO COMPLETE
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
+
 
 public class EmailClaimActivity extends Activity {
 
@@ -59,26 +41,48 @@ public class EmailClaimActivity extends Activity {
 		ClaimListManager.initManager(this.getApplicationContext());
 		ExpenseItemListManager.initManager(this.getApplicationContext());
 		
+		Bundle extras = getIntent().getExtras();
+		final Claim claim = (Claim) extras.get("claim");
 		
+		final String name = claim.getName().toString();
+		final String startDate = claim.getStartDate().toString();
+		final String endDate = claim.getEndDate().toString();
+		final String description = claim.getDescription().toString();
+		
+        final Button button = (Button) findViewById(R.id.sendEmailButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onClickSendButton(name, startDate, endDate, description);
+            }
+        });
 	}
 	
-	public void onClickSendButton(View v) {
+	public void onClickSendButton(String name, String startDate, String endDate, String description) {
 		
 		EditText subjectLine = (EditText) findViewById(R.id.emailSubject);
-		EditText emailAddress = (EditText) findViewById(R.id.emailAddress);
+		EditText emailAddress = (EditText) findViewById(R.id.emailAdd);
 		
 		String subject = subjectLine.getText().toString();
 		String emailAd = emailAddress.getText().toString();
-		String emailText = "sjgsjgnsnjn";
+		String emailText = "CLAIM" + 
+		"\n" + "\n" + 
+		"Name: " + name + "\n" + 
+		"Start Date: " + startDate + "\n" + 
+		"End Date: " + endDate + "\n" + 
+		"Additional Details: " + description + 
+		"\n" + "\n";
 		
-		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		
-		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailAd);
-		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
-		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailText);
-		emailIntent.setType("message/rfc822");
+		// Copy pasted from https://stackoverflow.com/questions/8284706/send-email-via-gmail
 		
-		this.startActivity(Intent.createChooser(emailIntent, "Send a Mail through.."));
+		Intent send = new Intent(Intent.ACTION_SENDTO);
+		String uriText = "mailto:" + Uri.encode(emailAd) + 
+		          "?subject=" + Uri.encode(subject) + 
+		          "&body=" + Uri.encode(emailText);
+		Uri uri = Uri.parse(uriText);
+
+		send.setData(uri);
+		startActivity(Intent.createChooser(send, "Send mail..."));
 		  
 		  
 	}

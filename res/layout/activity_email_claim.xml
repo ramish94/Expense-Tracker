@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/emailAddress"
+        android:id="@+id/emailAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -39,8 +39,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/emailAddress"
-        android:layout_below="@+id/emailAddress"
+        android:layout_alignLeft="@+id/emailAdd"
+        android:layout_below="@+id/emailAdd"
         android:layout_marginTop="22dp"
         android:text="Subject: "
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/emailAddress"
+        android:layout_alignRight="@+id/emailAdd"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -64,7 +64,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="37dp"
-        android:onClick="onClickSendButton"
         android:text="Send" />
 
 </RelativeLayout>
